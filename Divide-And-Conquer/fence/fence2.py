@@ -8,9 +8,9 @@ def fence(h):
         while stack and h[stack[-1]]>=h[i]:
             j=stack.pop()
             width=i if not stack else (i-stack[-1]-1)
-            ret=max(ret,h[j]*width)
-        stack.append(i)
-    return ret
+            ret=max(ret,h[j]*width) # while 문 끝
+        stack.append(i)  # for 문 끝
+    return ret 
 
 input=sys.stdin.readline
 for _ in range(int(input())):

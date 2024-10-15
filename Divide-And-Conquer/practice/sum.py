@@ -23,3 +23,5 @@ def fsum(n):
             return 2*fsum(n//2)+n*n//4
 
 print(fsum(int(sys.stdin.readline())))
+
+        
