@@ -1,8 +1,10 @@
+# DP 
+# O(N)
 import sys
 
-def maxsum(n,A):
-    curs,max=0,0
-    for i in range(n):
+def maxsum(N,A):
+    curs,maxs=0,0
+    for i in range(N):
         curs=max(curs,0)+A[i]
         maxs=max(maxs,curs)
     return maxs
