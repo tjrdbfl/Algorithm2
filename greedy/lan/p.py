@@ -28,22 +28,40 @@ def lan(n,W):
 
     return ret
 
+
 for _ in range(int(input())):
     n,m=map(int,input().split())
     x=list(map(int,input().split()))
     y=list(map(int,input().split()))
+    W=[[0]*n for _ in range(n)] # 인접 행렬
 
     # 가중치 행렬 만들기
-    W=[[0]*n for _ in range(n)]  
-    
     for u in range(n):
-        for v in range(u,n):
+        for v in range(n):
             W[u][v]=W[v][u]=(x[u]-x[v])**2+(y[u]-y[v])**2
-    
-    # 이미 설치된 케이블의 가중치를 0으로 설정한다. 
+
     for _ in range(m):
         u,v=map(int,input().split())
-        W[u][v]=W[v][u]=0
-
+        W[u][v]=W[v][u]=0 # 이미 설치된 케이블의 가중치를 0으로 설정한다. 
+    
     print(f"{lan(n,W):08f}")
 
+def lan(n,W): 
+    ret=0
+    dist=[W[0][i] for i in range(n)]
+
+    for _ in range(n-1):
+        min=float('inf')
+        for i in range(1,n):
+            if 0<=dist[i]<min:
+                min=dist[i]
+                vnear=i
+        
+        ret+=math.sqrt(dist[vnear])
+        dist[i]=-1
+
+        for i in range(1,n):
+            if dist[i]>W[i][vnear]:
+                dist[i]=W[i][vnear]
+
+    return ret
