@@ -10,7 +10,7 @@ def matchorder(n,russian,korean):
             korean.pop(0) # 가장 레이팅이 낮은 선수를 출전시킨다. 
         else:
             wins+=1 # 이길 수 있는 선수 중 가장 레이팅이 낮은 선수 출전시키기
-            korean.pop(bisect_left(korean,russian[i]))
+            korean.pop(bisect_left(korean,russian[i])) # russian[i] 보다는 크지만 가장 레이팅이 낮은 인덱스 반환
     return wins
 
 for _  in range(int(input())):
@@ -18,9 +18,6 @@ for _  in range(int(input())):
     russian=list(map(int,input().split()))
     korean=list(map(int,input().split()))
     print(matchorder(n,russian,korean))
-
-
-
 
 
 

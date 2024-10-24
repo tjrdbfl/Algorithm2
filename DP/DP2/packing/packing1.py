@@ -3,8 +3,8 @@
 def packing(i,include):
     global optval,optsol
     if i==n: # 모든 물건을 고려했을 때 
-        weight=sum[[w[j] for j in range(n) if include[j]]]
-        profit=sum[[p[j] for j in range(n) if include[j]]]
+        weight=sum([w[j] for j in range(n) if include[j]])
+        profit=sum([p[j] for j in range(n) if include[j]])
         if weight<=W and optval<profit:
             optval=profit
             optsol=include[:]
@@ -22,5 +22,5 @@ for _ in range(int(input())):
     optval=0 # 최적값
     optsol=[]
     packing(0,[False]*n) # 0번째 item 부터 완전 탐색
-    print(optval,sum(optsol))
+    print(optval,len(optsol))
     print(*[items[i][0] for i in range(n) if optsol[i]],sep='\n')
