@@ -11,6 +11,7 @@ def strjoin(strlen):
         ret+=len1+len2
 
     return ret
+
 # 최대 비용의 경우
 def strjoin1(strlen):
     strlen=[-x for x in strlen] # 음수로 넣기 
@@ -20,8 +21,9 @@ def strjoin1(strlen):
         len1=-heappop(strlen)
         len2=-heappop(strlen)
         heappush(strlen,-(len1+len2))
-        ret=len1+len2    
+        ret+=len1+len2    
     return ret
+
 
 for _ in range(int(input())):
     n=int(input())

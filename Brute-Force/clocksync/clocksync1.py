@@ -21,7 +21,7 @@ def aliagned(clocks):
     return not any(clocks)  # clock이 모두 0을 가리키면 True 반환
 
 def push(clocks,switch):
-    for clock in linked[switch]:
+    for clock  in linked[switch]:
         clocks[clock]=(clocks[clock]+1)%4
 
 def clocksync(clocks,switch):

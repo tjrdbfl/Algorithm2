@@ -25,7 +25,7 @@ def poly1(n,first):
         return cache[n][first]
 
 # Tabulation
-def poly2(n,first):
+def poly2(n):
     dp=[[0]*(i+1) for i in range(n+1)]
     for i in range(1,n+1):
         for first in range(1,i+1):
@@ -33,9 +33,9 @@ def poly2(n,first):
                 dp[i][first]=1
             else:
                 ret=0
-                for second in (1,i-first+1):
-                    ret=(ret+(first+second-1)*dp[i-first][second])%MOD
-                dp[i][first]=ret
+                for second in range(1, i - first + 1):  # 수정된 부분
+                    ret = (ret + (first + second - 1) * dp[i - first][second]) % MOD
+                dp[i][first] = ret
     return sum(dp[n])%MOD      
 
 # 입력
@@ -44,5 +44,25 @@ for _ in range(int(input())):
     ret=0
     cache=[[-1]*(i+1) for i in range(n+1)]
     for first in range(1,n+1):
-        ret=(ret+poly(n,first))%MOD
+        ret=(ret+poly1(n,first))%MOD
     print(ret)
+    print(poly2(n))
+
+
+def poly2(n):
+    dp=[[0]*(i+1) for i in range(n+1)]
+    for i in range(1,n+1):
+        for first in range(1,i+1):
+            if i==first:
+                return 1
+            else:
+                ret=0
+                for second in range(1,i-first+1):
+                    ret=(ret+(first+second-1)*dp[i-first][second])%MOD
+                dp[i][first]=ret
+
+    return sum(dp[n])%MOD
+
+
+
+

@@ -21,7 +21,6 @@ def packing(i,capacity):
         cache[i][capacity]=drop if capacity < w[i] else max(drop,p[i]+pick)
         return cache[i][capacity]
 
-
 for _ in range(int(input())):
     n,W=map(int,input().split())
     items=[input().split() for _  in range(n)]
@@ -32,3 +31,14 @@ for _ in range(int(input())):
     optsol=reconstruct(0,W)
     print(optval,len(optsol))
     print(*optsol,sep='\n')
+
+def reconstruct(i,capacity):
+    if i==n:
+        return []
+    elif packing(i,capacity)==packing(i+1,capacity):
+        return reconstruct(i+1,capacity)
+    else:
+        return [items[i][0]]+reconstruct(i+1,capacity-w[i])
+
+
+

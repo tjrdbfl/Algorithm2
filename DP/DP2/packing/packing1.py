@@ -24,3 +24,6 @@ for _ in range(int(input())):
     packing(0,[False]*n) # 0번째 item 부터 완전 탐색
     print(optval,len(optsol))
     print(*[items[i][0] for i in range(n) if optsol[i]],sep='\n')
+
+print(*[items[i][0] for i in range(n) if optsol[i]])
+

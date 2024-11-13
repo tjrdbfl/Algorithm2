@@ -2,8 +2,8 @@ MOD=1000000007
 
 def mmult(A,B):
     assert(len(A[0]),len(B))
-    C=[[-1]*M for _ in range(N)]
     N,K,M=len(A),len(A[0]),len(B)
+    C=[[-1]*M for _ in range(N)]
     for i in range(N):
         for j in range(M):
             for k in range(K):
@@ -38,3 +38,5 @@ def tiling(n):
 for _ in range(int(input())):
     n=int(input())
     print(tiling(n))
+
+

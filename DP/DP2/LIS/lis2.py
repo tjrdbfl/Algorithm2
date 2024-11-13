@@ -17,4 +17,3 @@ for _ in range(int(input())):
     cache=[-1]*n
     print(max(lis(i) for i in range(n)))
 
-

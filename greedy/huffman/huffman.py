@@ -73,6 +73,8 @@ print_preorder(root)
 print()
 print_inorder(root)
 print()
+print_postorder(root)
+print()
 encoder={}
 make_encoder(root,"",encoder)
 encoded=encode("abcdef",encoder)
@@ -80,3 +82,4 @@ print(encoded)
 decoded=[]
 decode(root,encoded,0,decoded)
 print(*decoded)
+

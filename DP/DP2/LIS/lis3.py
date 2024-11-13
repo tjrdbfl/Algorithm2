@@ -1,5 +1,6 @@
 # DP - tabulation + 최적해
 # O(n^2)
+
 def reconstruct(start):
     if start==-1:
         return []
@@ -8,7 +9,7 @@ def reconstruct(start):
 
 def lis(n,A):
     dp=[1]*n
-    choices=[-1]*n
+    choices=[-1]*n # 선택된 index list
     for i in range(n-1,-1,-1):
         for j in range(i+1,n):
             if A[i]<A[j]:

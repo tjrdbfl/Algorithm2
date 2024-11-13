@@ -15,3 +15,17 @@ def mmult(A,B):
     return C
 
 # Recursion
+C=[[0]*len(B[0]) for _ in range(len(A))]
+
+def mmult_recur(A,B,C,i=0,j=0,k=0):
+    N,K,M=len(A),len(A[0]),len(B[0])
+    if i>=N:
+        return C
+    if j>=M:
+        return mmult_recur(A,B,C,i+1,0,0)
+    if k>=K:
+        return mmult_recur(A,B,C,i,j+1,0)
+
+    C[i][j]+=A[i][k]*B[k][j]
+
+    return mmult_recur(A,B,C,i,j,k+1)

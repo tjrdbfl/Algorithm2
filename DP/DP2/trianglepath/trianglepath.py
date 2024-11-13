@@ -37,4 +37,3 @@ for _ in range(int(input())):
     optsol=reconstruct(0,0)
     print(optval)
     print(*optsol)
-

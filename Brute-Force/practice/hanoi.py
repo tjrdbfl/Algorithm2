@@ -9,3 +9,17 @@ def hanoi(n,src,via,dst):
         hanoi(n-1,src,dst,via) # 1단계: n-1개의 원판을 보조막대로 옮김
         hanoi(1,src,via,dst)  # 2단계: 가장 큰 원판을 목적지로 옮김
         hanoi(n-1,via,src,dst)  # 3단계: 보조막대에 있는 n-1개의 원판을 목적지로 옮김
+
+
+def hanoi_iter(n,src,via,dst):
+    stack=[(n,src,via,dst)]
+
+    while stack:
+        n,src,via,dst=stack.pop()
+
+        if n==1:
+            print(f"Move~")
+        else:
+            stack.append((n-1,src,dst,via))
+            stack.append((1,src,via,dst))
+            stack.append((n-1,src,dst,via))

@@ -27,12 +27,11 @@ def push(clocks,switch,cnt):
 # prod = (0, 1, 2, 3, 0, 1, 2, 3, 0, 1)
 def clocksync(clocks):
     ret=INF
-    for prod in product(range(4),repeat=10): # 0~9 스위치가지 각각 0번, 1번, 2번, 3번 누르는 조합을 모두 생성
-        pushed=clocks[:] # 원래 시계 정보
+    for prod in product(range(4),repeat=10):
+        pushed=clocks[:]
         for switch in range(10):
             push(pushed,switch,prod[switch])
-        if check(pushed):
-            ret=min(ret,sum(prod))
+        ret=min(ret,sum(prod))
     return ret
 
 input=sys.stdin.readline

@@ -6,10 +6,13 @@ MAX=2000000001
 def reconstruct(start,skip,result):
     result.append(A[start])
     followers=[] # 뒤에 오는 숫자들의 위치와 목록
+    
     for next in range(start+1,n):
         if (start==-1 or A[start]<A[next]) and dp_len[start]==dp_len[next]+1:
             followers.append((A[next],next))
     followers.sort() # 오름차순 정렬
+    # followers.sort(reverse=True) 내림차순
+    
     for f in followers:
         cnt=dp_cnt[f[1]]
         if cnt<=skip:
@@ -42,7 +45,7 @@ def make_count(n,A):
             dp[i]=ret
     return dp
 
-def klis(n,k,A):
+def klis(n,k,A): 
     global dp_len,dp_cnt 
     A+=[-float('inf')]  # 마지막에 -inf 추가
     dp_len=make_length(n,A)

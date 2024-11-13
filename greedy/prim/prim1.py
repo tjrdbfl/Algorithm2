@@ -15,7 +15,7 @@ def prim(n,adj):
         for v in range(n): # 아직 트리에 포함되지 않은 정점들 중에서 최소 간선 가중치를 가진 정점 v를 선택하기 위한 조건
             if not added[v] and (u==-1 or min_weight[u]>min_weight[v]):
                 u=v
-        if parent[u]!=u: # cnfqkfwjdwjadl dkslaus
+        if parent[u]!=u: # 출발 정점이 아니면
             selected.append((parent[u],u))
         ret+=min_weight[u]
         added[u]=True
@@ -39,3 +39,5 @@ for _ in range(m):
 cost,edges=prim(n,adj)
 print(cost)
 print(*edges)
+
+
