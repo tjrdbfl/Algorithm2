@@ -14,7 +14,7 @@ def union(a,b):
         if rank[p]==rank[q]:
             rank[q]+=1
         size[q]+=size[p]
-    return q
+    return q # 부모가 된 노드 q 를 리턴한다. 
 
 def ack(a,b):
     p,q=find(a),find(b)
@@ -23,7 +23,7 @@ def ack(a,b):
     a=union(p,q)
     b=union(enemy[p],enemy[q])
     enemy[a]=b
-    if b!=-1:
+    if b!=-1: # b가 공집합이 아니라면 
         enemy[b]=a
     return True
 
@@ -45,18 +45,19 @@ def max_party():
     return ret
 
 def editorwars(n,m,reply):
-    global parent,rank,enemy,size
-    parent=list(range(n))
+    global rank,parent,size,enemy
     rank=[1]*n
-    enemy=[-1]*n
     size=[1]*n
+    enemy=[-1]*n
+    parent=list(range(n))
+
     for i in range(m):
         c,a,b=reply[i]
         a,b=int(a),int(b)
         ret=ack(a,b) if c=="ACK" else dis(a,b)
         if not ret:
-            return "CONTRADICTION AT " +str(i+1)
-    return "MAX PARTY SIZE IS "+str(max_party())
+            return "CONTRADICTION "+str(i+1)
+    return "MAX PARTY IS "+str(max_party())
 
 for _ in range(int(input())):
     n,m=map(int,input().split())
