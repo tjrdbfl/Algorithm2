@@ -1,6 +1,6 @@
 from copy import deepcopy
 
-INF=1000000000000000000000
+INF=float('inf')
 
 def drunken(n,adj,delay):
     order=sorted([(delay[i],i) for i in range(n)] )
